@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        long n,k;
+        cin>>n>>k;
+        long arr[n];
+        long temp=0,flag=0,day=0;
+        
+        for(long i=0;i<n;i++)
+        {
+            cin>>arr[i];
+            temp+=arr[i];
+        }
+        
+        for(long i=0;i<n-1;i++)
+        {
+            if(arr[i]<k)
+            {
+                day=i;
+                flag=1;
+                break;
+            }
+            arr[i+1]+=(arr[i]-k);
+        }
+        
+        if(flag==1)
+        cout<<day+1<<endl;
+        else
+        {
+            day=(temp/k)+1;
+            cout<<day<<endl;
+        }
+    }
+}
